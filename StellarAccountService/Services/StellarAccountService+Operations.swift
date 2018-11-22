@@ -68,7 +68,7 @@ extension StellarAccountService {
         })
 
         // Fetch effects
-        let fetchEffectsOp = FetchAccountEffectsOperation(horizon: sdk, accountId: accountId, completion: { effects in
+        let fetchEffectsOp = FetchAccountEffectsOperation(horizon: sdk, accountId: accountId, completion: { effects, operation in
             account.mappedEffects = effects.reduce(into: [:], { list, effect in
                 list[effect.identifier] = effect
             })

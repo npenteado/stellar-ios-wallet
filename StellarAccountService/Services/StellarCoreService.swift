@@ -23,6 +23,7 @@ public final class StellarCoreService: CoreService {
     public var accountService: StellarAccountService!
     public var tradeService: StellarTradeService!
     public var indexingService: StellarIndexingService!
+    public var downloadService: StellarAccountDownloadService!
 
     public init(with horizonAPI: StellarConfig.HorizonAPI) {
         api = horizonAPI
@@ -31,10 +32,14 @@ public final class StellarCoreService: CoreService {
         let accService = StellarAccountService(with: self)
         let trService = StellarTradeService(with: self)
         let idxService = StellarIndexingService(with: self)
+        let dlService = StellarAccountDownloadService(with: self)
 
         self.accountService = accService
         self.tradeService = trService
         self.indexingService = idxService
+        self.downloadService = dlService
+
+        dlService.download()
 
         accService.registerForUpdates(idxService)
     }

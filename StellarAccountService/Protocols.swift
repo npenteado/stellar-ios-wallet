@@ -42,6 +42,10 @@ protocol StellarIndexingServiceProtocol: Subservice {
     func relatedObject<In: IndexableStellarObject, Out: IndexableStellarObject>(startingAt object: In) -> Out?
 }
 
+protocol StellarAccountDownloadServiceProtocol: Subservice {
+    func download()
+}
+
 protocol SecretManagerProtocol: AnyObject {
     var publicKeyKey: String { get }
     var privateKeyKey: String { get }
